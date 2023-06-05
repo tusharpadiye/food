@@ -32,6 +32,7 @@ export default function Signup() {
         location: credentials.geolocation
       })
     });
+    
     const temp = await response.text();
     const json = temp === "" ? {} : JSON.parse(temp);
     console.log(temp); 
