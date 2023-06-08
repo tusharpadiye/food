@@ -9,8 +9,21 @@ const mongoDB = () => {
       console.log("Connected");
         const fetched_data = mongoose.connection.db.collection("food_items");
         fetched_data.find({}).toArray(function(err,data){
-            if(err) console.log(err);
-            else console.log();//data);
+          const foodCategory = mongoose.connection.db.collection("food_Category");
+          foodCategory.find({}).toArray(function(err,catData){
+            if(err) 
+            {console.log(err);}
+            else{
+              global.food_items =data;
+              global.foodCategory =catData;
+            }
+          })
+          /*if(err) console.log(err);
+            else{
+              global.food_items =data;
+               
+            }*/
+
         })
     }
   });
